@@ -1,0 +1,96 @@
+<!-- order.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Book</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            background: #f4f4f4;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #0b910b;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: white;
+            color: #0b910b;
+            border: 1px solid #0b910b;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2 style="text-align:center;">Order Your Book</h2>
+
+    <form action="#">
+        <label for="bookName">Book Name</label>
+        <input type="text" id="bookName" name="bookName" placeholder="Enter book title" required>
+
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+
+        <label for="address">Delivery Address</label>
+        <textarea id="address" name="address" placeholder="Your delivery address" required></textarea>
+
+        <input type="submit" value="Place Order">
+    </form>
+
+
+
+    <script>
+   
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form from submitting
+            alert("Your book order has been placed successfully!");
+            form.reset(); // Optional: clear the form after alert
+        });
+
+        // Pre-fill book name if passed as URL parameter
+        const params = new URLSearchParams(window.location.search);
+        const bookName = params.get("book");
+        if (bookName) {
+            document.getElementById("bookName").value = bookName;
+        }
+    });
+</script>
+
+
+
+
+</body>
+
+</html>
